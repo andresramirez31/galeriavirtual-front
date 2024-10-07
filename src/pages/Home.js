@@ -9,13 +9,13 @@ const Home = () => {
 
       <Link to="/createGallery">
         <button style={{ padding: '10px 20px', fontSize: '16px' }}>
-          Ir a creacion de salon
+          Ir a la creacion de salon
         </button>
       </Link>
 
       <Link to="/login">
         <button style={{ padding: '10px 20px', fontSize: '16px' }}>
-          Ir a Login
+          Iniciar Sesion
         </button>
       </Link>
     </div>
