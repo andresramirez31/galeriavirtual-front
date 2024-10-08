@@ -4,6 +4,7 @@ import Home from './pages/Home';
 import Resources from './pages/Resources';
 import ArtSalonCreation from './pages/ArtSalonCreation';
 import Login from './pages/Login';
+import SalonPick from './pages/SalonPick';
 
 const AppRoutes = () => {
     return (
@@ -12,6 +13,7 @@ const AppRoutes = () => {
             <Route path="/resources" element={<Resources />} />
             <Route path="/login" element={<Login />} />
             <Route path="/createGallery" element={<ArtSalonCreation />} />
+            <Route path='/SalonPick' element={<SalonPick />} />
         </Routes>
     );
 };

@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import '../styles/ArtSalonCreation.css';
+
 
 const ArtSalonCreation = () => {
+
+    // Manejo de variables de la pagina
     
     const [nombreSalon, setNombreSalon] = useState('');
     const [descSalon, setDescSalon] = useState('');
@@ -24,50 +28,74 @@ const ArtSalonCreation = () => {
         console.log('Guardando Salon con datos:', nombreSalon, descSalon, fechaExh);
         
         
-        navigate('/');
+        navigate('/SalonPick');
       };
     
     return(
     
     <div>
-        <h2>Creación del salón</h2>
-        <form onSubmit={handleSubmit}>
-            <div>
-            <label htmlFor='NombreSalon'>Nombre del salon: </label>
-            <input 
-                type="text"
-                id="NombreSalon" 
-                value={nombreSalon}
-                placeholder="Ingrese el nombre del salon" 
-                onChange={(e) => setNombreSalon(e.target.value)} 
-                required 
-            />
-            </div>
-            <div>
-            <label htmlFor='DescSalon'>Descripcion del salon: </label>
-            <input 
-                type="text"
-                id="DescSalon" 
-                value={descSalon}
-                placeholder="Ingrese descripcion del salon" 
-                onChange={(e) => setDescSalon(e.target.value)} 
-                required 
-            />
-            </div>
-            <div>
-            <label htmlFor='fechaExh'>Fecha de la exhibicion: </label>
-            <input 
-                type="date"
-                id="fechaExh" 
-                placeholder="Ajustar fecha exhibicion" 
-                onChange={handleDateChange}  
-            />
+        <h2>CREACIÓN DEL SALÓN</h2>
+        <div className='Box'>
+            
+            <form onSubmit={handleSubmit} className='form'>
+                
+                <div className='column1'>
+                    <label htmlFor='NombreSalon' className='label_box'>Nombre del salon:   </label>
 
-            <p>Selected Date: {fechaExh ? fechaExh.toLocaleDateString() : 'No date selected'}</p>
+                    <input 
+                        type="text"
+                        id="NombreSalon" 
+                        value={nombreSalon}
+                        className='value_box'
+                        placeholder="Ingrese el nombre del salon" 
+                        onChange={(e) => setNombreSalon(e.target.value)} 
+                        required 
+                    />
 
-            </div>
-            <button type="submit">Guardar Salon</button>
-        </form>
+                </div>
+
+                <div className='column2'>
+                    <label htmlFor='fechaExh' className='label_box'>Fecha de la exhibicion:   </label>
+
+                </div>
+
+                <div className='column1'>
+                    <label htmlFor='DescSalon' className='label_box'>Descripcion del salon:   </label>
+
+                    <input 
+                        type="text"
+                        id="DescSalon" 
+                        value={descSalon}
+                        className='value_box'
+                        placeholder="Ingrese descripcion del salon" 
+                        onChange={(e) => setDescSalon(e.target.value)} 
+                        required 
+                    />
+                
+                </div>
+
+                <div className='column2'>
+                    <input 
+                        type="date"
+                        id="fechaExh" 
+                        className='value_box'
+                        placeholder="Ajustar fecha exhibicion" 
+                        onChange={handleDateChange}  
+                    />
+                </div>
+
+                <div className='column1'>
+                    <p>Fecha seleccionada:</p>
+                </div>
+
+                <div className='column2'>
+                    <p>{fechaExh ? fechaExh.toLocaleDateString() : 'No date selected'}</p>
+                </div>
+                
+                <button type="submit" className='column1 button'>Guardar Salon</button>
+            </form>
+            
+        </div>
     </div>
 
     );
