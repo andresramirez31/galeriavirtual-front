@@ -1,0 +1,72 @@
+.save_button {
+    position: relative;
+    display: inline-block;
+    padding: 15px 25px;
+    font-size: 24px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: #04AA6D;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 9px #999;
+    bottom: 10px;
+  }
+  
+  .save_button:hover {background-color: #3e8e41}
+  
+  .save_button:active {
+    background-color: #3e8e41;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+  }
+
+  .btn_event {
+    position: relative;
+    display: inline-block;
+    padding: 15px 25px;
+    font-size: 24px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: #1a0a72;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 9px #999;
+    margin-top: 10px;
+  }
+  
+  .btn_event:hover {background-color: #2559d1}
+  
+  .btn_event:active {
+    background-color: #2559d1;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+  }
+
+  .Box {
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    gap: 10px;
+    border: 1px solid #ccc; /* Creates the box border */
+    padding: 20px;          /* Adds spacing inside the box */
+    background-color: #f9f9f9; /* Light background color for the box */
+    border-radius: 10px;    /* Rounds the corners of the box */
+    width: 1800px;           /* Sets a fixed width for the box */
+    margin: 20px auto;
+    border-color: red;
+    border-width: 4px;
+    box-shadow: 0 7px 10px #999, 7px 0 10px #999; 
+}
+
+.Box > div {
+    padding: 20px;
+    text-align: center;
+    border: 1px solid #ccc;
+}

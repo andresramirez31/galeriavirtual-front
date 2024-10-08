@@ -31,27 +31,6 @@ body {
     
 }
 
-.Box {
-
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto;
-    gap: 10px;
-    border: 1px solid #ccc; /* Creates the box border */
-    padding: 20px;          /* Adds spacing inside the box */
-    background-color: #f9f9f9; /* Light background color for the box */
-    border-radius: 10px;    /* Rounds the corners of the box */
-    width: 1800px;           /* Sets a fixed width for the box */
-    margin: 20px auto;
-    
-}
-
-.box > div {
-    padding: 20px;
-    text-align: center;
-    border: 1px solid #ccc;
-}
-
 .form {
     display: contents;
 }
@@ -75,28 +54,8 @@ h2 {
     text-align: center;
     font-family: 'Times New Roman', Times, serif;
     font: bold;
+    outline: none;
     font-size: 60px;
 }
 
-.button {
-    display: inline-block;
-    padding: 15px 25px;
-    font-size: 24px;
-    cursor: pointer;
-    text-align: center;
-    text-decoration: none;
-    outline: none;
-    color: #fff;
-    background-color: #04AA6D;
-    border: none;
-    border-radius: 15px;
-    box-shadow: 0 9px #999;
-  }
-  
-  .button:hover {background-color: #3e8e41}
-  
-  .button:active {
-    background-color: #3e8e41;
-    box-shadow: 0 5px #666;
-    transform: translateY(4px);
-  }
+

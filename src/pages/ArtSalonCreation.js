@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/ArtSalonCreation.css';
-
+import '../styles/main.css';
 
 const ArtSalonCreation = () => {
 
@@ -92,7 +92,7 @@ const ArtSalonCreation = () => {
                     <p>{fechaExh ? fechaExh.toLocaleDateString() : 'No date selected'}</p>
                 </div>
                 
-                <button type="submit" className='column1 button'>Guardar Salon</button>
+                <button type="submit" className='column1 save_button'>Guardar Salon</button>
             </form>
             
         </div>

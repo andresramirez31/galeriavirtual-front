@@ -1,0 +1,31 @@
+.SalonBox {
+
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    gap: 10px;
+    border: 1px solid #ccc; /* Creates the box border */
+    padding: 20px;          /* Adds spacing inside the box */
+    background-color: #f9f9f9; /* Light background color for the box */
+    border-radius: 10px;    /* Rounds the corners of the box */
+    width: 1800px;           /* Sets a fixed width for the box */
+    margin: 20px auto;
+    border-color: red;
+    border-width: 4px;
+    box-shadow: 0 7px 10px #999, 7px 0 10px #999; 
+}
+
+.SalonBox > div {
+    padding: 20px;
+    text-align: center;
+    border: 1px solid #ccc;
+}
+
+.SalonText {
+
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 30px;
+    color: black;
+
+}
