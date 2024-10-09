@@ -1,39 +1,8 @@
-
-body {
-    background-color: #026937;
-}
-
 .home-container {
     background-color: #f0f0f0;
     padding: 20px;
   }
   
-.value_box {
-
-    position: relative;
-    left: 20px;
-    border-radius: 10px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    font-size: 30px;
-    width: 50%;
-    height: 50%;
-    margin: 10px;
-}
-
-.label_box {
-
-    text-align: center;
-    font-family: 'Times New Roman', Times, serif;
-    font-size: 30px;
-    width: 80%;
-    color: black;
-    
-}
-
-.form {
-    display: contents;
-}
 
 .column1 {
     grid-column: 1;
@@ -48,14 +17,6 @@ body {
     align-content: center;
 }
 
-h2 {
-    color: blue;
-    background-color: white;
-    text-align: center;
-    font-family: 'Times New Roman', Times, serif;
-    font: bold;
-    outline: none;
-    font-size: 60px;
-}
+
 
 

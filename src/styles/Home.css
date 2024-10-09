@@ -1,0 +1,30 @@
+.CenterContainer{
+    display: flex;
+    justify-content: center; 
+    align-items: center;     
+}
+
+.HomeBox {
+
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    place-items: center;
+    gap: 10px;
+    border: 1px solid #ccc; /* Creates the box border */
+    padding: 20px;          /* Adds spacing inside the box */
+    background-color: #f9f9f9; /* Light background color for the box */
+    border-radius: 10px;    /* Rounds the corners of the box */
+    width: 400px;           /* Sets a fixed width for the box */
+    margin: 20px auto;
+    border-color: red;
+    border-width: 4px;
+    box-shadow: 0 7px 10px #999, 7px 0 10px #999;
+    align-content: center; 
+    
+}
+
+.HomeBox > div {
+    padding: 20px;
+    text-align: center;
+}
