@@ -70,6 +70,10 @@ body {
     border-radius: 15px;
     box-shadow: 0 9px #999;
     margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    
   }
   
   .btn_event:hover {background-color: #2559d1}

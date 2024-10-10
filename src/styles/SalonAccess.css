@@ -1,0 +1,17 @@
+.SalonText{
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 40px;
+    width: 80%;
+    color: black;
+}
+
+.SalonBox{
+    border: 1px solid #ccc;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    width: 1800px;
+    margin: 20px auto;
+}
+

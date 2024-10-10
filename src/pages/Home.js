@@ -21,6 +21,12 @@ const Home = () => {
             </button>
           </Link>
 
+          <Link to="/SalonAccess">
+            <button className="btn_event" style={{ padding: '10px 20px', fontSize: '16px' }}>
+              Entrar a Salon de exposiciones
+            </button>
+          </Link>
+
           <Link to="/login">
             <button className="btn_event" style={{ padding: '10px 20px', fontSize: '16px' }}>
               Iniciar Sesion
