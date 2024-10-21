@@ -7,6 +7,7 @@ const NavigationBar = () => {
       <ul>
         <li><Link to="/">Home</Link></li>
         <li><Link to="/resources">Resources</Link></li>
+        <li><Link to="/gallery">Galería</Link></li>
       </ul>
     </nav>  
   );
