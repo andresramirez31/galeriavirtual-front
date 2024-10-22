@@ -10,7 +10,7 @@ const SalonAccess = () => {
     const [isFull, setIsFull] = useState(false);
 
     useEffect(() => {
-        // Simulación de obtención de datos del salon
+        // Simulación de obtención de datos del salón
         setSalonName('Salon de Ejemplo');
         setMaxMembers(20);
         setCurrentMembers(['Usuario1', 'Usuario2', 'Usuario3']);

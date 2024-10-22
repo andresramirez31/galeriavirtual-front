@@ -6,8 +6,8 @@ import '../styles/Home.css';
 const Home = () => {
     return (
       <div>
-      <h2>GALERIA VIRTUAL UDEA</h2>
-      <p>Para exhibir tus proyectos academicos al mundo!</p>
+      <h2>GALERÍA VIRTUAL UDEA</h2>
+      <p>Para exhibir tus proyectos académicos al mundo!</p>
       
       <div className="HomeBox">
 
@@ -17,19 +17,19 @@ const Home = () => {
 
           <Link to="/createGallery">
             <button className='btn_event' style={{ padding: '10px 20px', fontSize: '16px' }}>
-              Ir a la creacion de salon
+              Ir a la creación de salón
             </button>
           </Link>
 
           <Link to="/SalonAccess">
             <button className="btn_event" style={{ padding: '10px 20px', fontSize: '16px' }}>
-              Entrar a Salon de exposiciones
+              Entrar a Salón de exposiciones
             </button>
           </Link>
 
           <Link to="/login">
             <button className="btn_event" style={{ padding: '10px 20px', fontSize: '16px' }}>
-              Iniciar Sesion
+              Iniciar Sesión
             </button>
           </Link>
 

@@ -1,5 +1,5 @@
 h2 {
-  color: blue;
+  color: #026937;
   background-color: white;
   text-align: center;
   font-family: 'Times New Roman', Times, serif;
@@ -18,8 +18,38 @@ p {
 }
 
 body {
-  background-color: #026937;
+  background-color: #3ebdac;
 }
+
+nav {
+  background: #f9f9f9;
+  padding: 16px;
+}
+
+nav .menuItems {
+  list-style: none;
+  display: flex;
+  gap: 50px;
+}
+
+nav .menuItems li .customLink {
+  text-decoration: none;
+  color: #026937;
+  font-size: 24px;
+  font-weight: 400;
+  position: relative;
+  text-transform: uppercase;
+  transition: color 0.5s ease-in-out;
+}
+
+nav .menuItems li .customLink:hover {
+  color: #8dc63f ;
+}
+
+
+
+
+
 
 .greeting {
   color: black;
@@ -32,7 +62,7 @@ body {
 .save_button {
     position: relative;
     display: inline-block;
-    padding: 15px 25px;
+    padding: 15px 15px;
     font-size: 24px;
     cursor: pointer;
     text-align: center;
@@ -45,6 +75,8 @@ body {
     box-shadow: 0 9px #999;
     bottom: 10px;
     margin-top: 10px;
+    width: 30%;
+    justify-self: center;
   }
   
   .save_button:hover {background-color: #3e8e41}
@@ -65,7 +97,7 @@ body {
     text-decoration: none;
     outline: none;
     color: #fff;
-    background-color: #1a0a72;
+    background-color: #137598;
     border: none;
     border-radius: 15px;
     box-shadow: 0 9px #999;

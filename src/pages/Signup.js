@@ -1,26 +1,20 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../styles/Login.css';
+import '../styles/Signup.css';
 
-const Login = () => {
+const Signup = () => {
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
   const [username, setUsername] = useState('');
   const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     
-    const response = await fetch('http://localhost:8080/Api/auth/login', {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({username, password}),
-    });
+    // Prueba simulada, ajustar API
+    console.log('Signing up with', email, username, password, confirmPassword);
     
-    if(response.ok){
-      alert('Login exitoso');    
-    } else {
-      alert('Credenciales invalidas');
-    }
     
     navigate('/');
   };
@@ -30,7 +24,18 @@ const Login = () => {
       <h2>Inicio de sesión</h2>
       <div className='LoginBox'>
         <form className='form' onSubmit={handleSubmit}>
-          
+          <div>
+            <label className="label_box_login" htmlFor='email'>Correo Electrónico:</label>
+            <input 
+              type="email"
+              id="email"
+              className='value_box' 
+              value={email} 
+              onChange={(e) => setEmail(e.target.value)} 
+              required 
+            />
+          </div>
+
           <div>
             <label className="label_box_login" htmlFor='username'>Usuario:</label>
             <input 
@@ -54,11 +59,23 @@ const Login = () => {
               required 
             />
           </div>
-          <button type="submit" className='save_button'>Login</button>
+
+          <div>
+            <label className="label_box_login" htmlFor='ConfirmPassword'>Confirmar contraseña:</label>
+            <input 
+              type="password"
+              id="ConfirmPassword"
+              className='value_box' 
+              value={confirmPassword} 
+              onChange={(e) => setConfirmPassword(e.target.value)} 
+              required 
+            />
+          </div>
+          <button type="submit" className='save_button'>Registrarse</button>
         </form>
       </div>
     </div>
   );
 };
 
-export default Login;
+export default Signup;

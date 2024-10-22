@@ -25,7 +25,7 @@ const ArtSalonCreation = () => {
         e.preventDefault();
         
         // Prueba simulada, ajustar API
-        console.log('Guardando Salon con datos:', nombreSalon, descSalon, fechaExh);
+        console.log('Guardando Salón con datos:', nombreSalon, descSalon, fechaExh);
         
         
         navigate('/SalonPick');
@@ -40,14 +40,14 @@ const ArtSalonCreation = () => {
             <form onSubmit={handleSubmit} className='form'>
                 
                 <div className='column1'>
-                    <label htmlFor='NombreSalon' className='label_box'>Nombre del salon:   </label>
+                    <label htmlFor='NombreSalon' className='label_box'>Nombre del salón:  </label>
 
                     <input 
                         type="text"
                         id="NombreSalon" 
                         value={nombreSalon}
                         className='value_box'
-                        placeholder="Ingrese el nombre del salon" 
+                        placeholder="Ingrese el nombre del salón" 
                         onChange={(e) => setNombreSalon(e.target.value)} 
                         required 
                     />
@@ -55,19 +55,19 @@ const ArtSalonCreation = () => {
                 </div>
 
                 <div className='column2'>
-                    <label htmlFor='fechaExh' className='label_box'>Fecha de la exhibicion:   </label>
+                    <label htmlFor='fechaExh' className='label_box'>Fecha de la exhibición:   </label>
 
                 </div>
 
                 <div className='column1'>
-                    <label htmlFor='DescSalon' className='label_box'>Descripcion del salon:   </label>
+                    <label htmlFor='DescSalon' className='label_box'>Descripción del salón:   </label>
 
                     <input 
                         type="text"
                         id="DescSalon" 
                         value={descSalon}
                         className='value_box'
-                        placeholder="Ingrese descripcion del salon" 
+                        placeholder="Ingrese descripción del salón" 
                         onChange={(e) => setDescSalon(e.target.value)} 
                         required 
                     />
@@ -79,7 +79,7 @@ const ArtSalonCreation = () => {
                         type="date"
                         id="fechaExh" 
                         className='value_box'
-                        placeholder="Ajustar fecha exhibicion" 
+                        placeholder="Ajustar fecha exhibición" 
                         onChange={handleDateChange}  
                     />
                 </div>
@@ -92,7 +92,7 @@ const ArtSalonCreation = () => {
                     <p>{fechaExh ? fechaExh.toLocaleDateString() : 'No date selected'}</p>
                 </div>
                 
-                <button type="submit" className='column1 save_button'>Guardar Salon</button>
+                <button type="submit" className='column1 save_button'>Guardar Salón</button>
             </form>
             
         </div>
