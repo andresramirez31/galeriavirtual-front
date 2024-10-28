@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import '../styles/SalonHolder.css';
 import '../styles/main.css';
-import React from 'react';
+import React, { useState }  from 'react';
 
 const SalonHolder = () => {
 

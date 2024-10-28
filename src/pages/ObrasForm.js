@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import '../styles/main.css';
 
 const ObrasForm = () => { 
     
@@ -6,6 +8,7 @@ const ObrasForm = () => {
     const[authorName, setAuthorName] = useState("");
     const[file, setFile] = useState("");
     const[desc, setDesc] = useState("");
+    const navigate = useNavigate();
 
 
     const handleSubmit = async (e) => {
@@ -28,8 +31,8 @@ const ObrasForm = () => {
 
     return (
         <div>
-          <h2>Inicio de sesión</h2>
-          <div className='ObrasBox'>
+          <h2>Formulario para obras</h2>
+          <div className='Box'>
             <form className='form' onSubmit={handleSubmit}>
               
               <div>
@@ -80,10 +83,12 @@ const ObrasForm = () => {
                 />
               </div>
 
-              <button type="submit" className='save_button'>Login</button>
+              <button type="submit" className='save_button'>Guardar obra</button>
             </form>
           </div>
         </div>
       );
     
 }
+
+export default ObrasForm;

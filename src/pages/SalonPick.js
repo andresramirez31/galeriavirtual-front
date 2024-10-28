@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import React from "react";
 import '../styles/SalonPick.css'
 import '../styles/main.css'
@@ -15,7 +16,9 @@ const SalonPick = () => {
                     <p className="SalonText">Bienvenido/a Usuario</p>
                 </div>
                 
+                <Link to="/ObrasForm">
                 <button id="BtnAñadirObra" className="btn_event">Añadir obra</button>
+                </Link>
                 <button id="BtnEliminarObra" className="btn_event">Eliminar obra</button>
                 <button id="BtnAñadirExpositor" className="btn_event">Añadir expositor</button>
 
