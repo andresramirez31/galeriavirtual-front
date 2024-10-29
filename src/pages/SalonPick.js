@@ -19,8 +19,14 @@ const SalonPick = () => {
                 <Link to="/ObrasForm">
                 <button id="BtnAñadirObra" className="btn_event">Añadir obra</button>
                 </Link>
+
+                <Link to="/ObrasForm">
                 <button id="BtnEliminarObra" className="btn_event">Eliminar obra</button>
+                </Link>
+                
+                <Link to="/Login">
                 <button id="BtnAñadirExpositor" className="btn_event">Añadir expositor</button>
+                </Link>
 
             </div>
         </div>
