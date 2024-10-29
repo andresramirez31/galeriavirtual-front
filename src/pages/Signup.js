@@ -6,14 +6,28 @@ const Signup = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const [username, setUsername] = useState('');
+  const [nombre, setNombre] = useState('');
+  const [rol, setRol] = useState('');
+  const [estado, setEstado] = useState('');
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     
     // Prueba simulada, ajustar API
-    console.log('Signing up with', email, username, password, confirmPassword);
+    console.log('Signing up with', email, nombre, password, confirmPassword, rol, estado);
+
+    const response = await fetch('http://localhost:8080/api/auth/register', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({nombre, rol, estado}),
+    });
+    
+    if(response.ok){
+      alert('Registro exitoso');    
+    } else {
+      alert('Credenciales invalidas');
+    }
     
     
     navigate('/');
@@ -42,8 +56,8 @@ const Signup = () => {
               type="text"
               id="username" 
               className='value_box'
-              value={username} 
-              onChange={(e) => setUsername(e.target.value)} 
+              value={nombre} 
+              onChange={(e) => setNombre(e.target.value)} 
               required 
             />
           </div>
@@ -71,6 +85,31 @@ const Signup = () => {
               required 
             />
           </div>
+
+          <div>
+            <label className="label_box_login" htmlFor='role'>Rol:</label>
+            <input 
+              type="text"
+              id="role"
+              className='value_box' 
+              value={rol} 
+              onChange={(e) => setRol(e.target.value)} 
+              required 
+            />
+          </div>
+
+          <div>
+            <label className="label_box_login" htmlFor='state'>Estado:</label>
+            <input 
+              type="text"
+              id="state"
+              className='value_box' 
+              value={estado} 
+              onChange={(e) => setEstado(e.target.value)} 
+              required 
+            />
+          </div>
+
           <button type="submit" className='save_button'>Registrarse</button>
         </form>
       </div>

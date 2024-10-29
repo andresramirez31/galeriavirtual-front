@@ -4,21 +4,26 @@ import '../styles/main.css';
 
 const ObrasForm = () => { 
     
-    const[projectName, setProjectName] = useState("");
-    const[authorName, setAuthorName] = useState("");
-    const[file, setFile] = useState("");
-    const[desc, setDesc] = useState("");
+    const[nombre, setNombre] = useState("");
+    const[exponente, setExponente] = useState("");
+    const[medioAudiovisual, setMedioAudiovisual] = useState("");
+    const[palabrasClave, setPalabrasClave] = useState([]);
+    const[inputPalabra, setInputPalabra] = useState("");
+    const[otros, setOtros] = useState("");
+    const[descripcion, setDescripcion] = useState("");
     const navigate = useNavigate();
 
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         
-        const response = await fetch('http://localhost:8080/Api/projectForm', {
+        const response = await fetch('http://localhost:8080/api/obras', {
           method: 'POST',
           headers: {'Content-Type': 'application/json'},
-          body: JSON.stringify({projectName, authorName, desc, file}),
+          body: JSON.stringify({nombre, medioAudiovisual, descripcion, exponente, palabrasClave, otros}),
         });
+
+        console.log(JSON.stringify({nombre, medioAudiovisual, descripcion, exponente, palabrasClave, otros}))
         
         if(response.ok){
           alert('Creación de proyecto exitosa');    
@@ -29,6 +34,13 @@ const ObrasForm = () => {
         navigate('/');
     };
 
+    const handleAddItem = () => {
+      if (inputPalabra.trim()) {  // Check for non-empty input
+        setPalabrasClave((prevPalabrasClave) => [...prevPalabrasClave, inputPalabra]);
+        setInputPalabra('');  // Clear the input after adding
+      }
+    };
+
     return (
         <div>
           <h2>Formulario para obras</h2>
@@ -36,49 +48,74 @@ const ObrasForm = () => {
             <form className='form' onSubmit={handleSubmit}>
               
               <div>
-                <label className="label_box_login" htmlFor='username'>Nombre de la obra:</label>
+                <label className="label_box_login" htmlFor='projectName'>Nombre de la obra:</label>
                 <input 
                   type="text"
-                  id="name" 
+                  id="projectName" 
                   className='value_box'
-                  value={projectName} 
-                  onChange={(e) => setProjectName(e.target.value)} 
+                  value={nombre} 
+                  onChange={(e) => setNombre(e.target.value)} 
                   required 
                 />
               </div>
-
+              
               <div>
-                <label className="label_box_login" htmlFor='password'>Nombre del autor de la obra:</label>
+                <label className="label_box_login" htmlFor='projectType'>Medio audiovisual:</label>
                 <input 
-                  type="password"
-                  id="password"
+                  type="text"
+                  id="projectType"
                   className='value_box' 
-                  value={authorName} 
-                  onChange={(e) => setAuthorName(e.target.value)} 
+                  value={medioAudiovisual} 
+                  onChange={(e) => setMedioAudiovisual(e.target.value)} 
                   required 
                 />
               </div>
     
               <div>
-                <label className="label_box_login" htmlFor='password'>Descripción de la obra:</label>
+                <label className="label_box_login" htmlFor='desc'>Descripción de la obra:</label>
                 <input 
-                  type="password"
-                  id="password"
+                  type="text"
+                  id="desc"
                   className='value_box' 
-                  value={desc} 
-                  onChange={(e) => setDesc(e.target.value)} 
+                  value={descripcion} 
+                  onChange={(e) => setDescripcion(e.target.value)} 
                   required 
                 />
               </div>
 
               <div>
-                <label className="label_box_login" htmlFor='password'>Carga de archivo de la obra:</label>
+                <label className="label_box_login" htmlFor='authorName'>Nombre del autor de la obra:</label>
                 <input 
-                  type="password"
-                  id="password"
+                  type="text"
+                  id="authorName"
                   className='value_box' 
-                  value={file} 
-                  onChange={(e) => setFile(e.target.value)} 
+                  value={exponente} 
+                  onChange={(e) => setExponente(e.target.value)} 
+                  required 
+                />
+              </div>
+
+              <div>
+                <label className="label_box_login" htmlFor='keywords'>Palabras clave:</label>
+                <input 
+                  type="text"
+                  id="keywords"
+                  className='value_box' 
+                  value={inputPalabra} 
+                  onChange={(e) => setInputPalabra(e.target.value)} 
+                  required 
+                />
+                <button className="save_button" onClick={handleAddItem}>Añadir palabras clave:</button>
+              </div>
+
+              <div>
+                <label className="label_box_login" htmlFor='other'>Otros:</label>
+                <input 
+                  type="text"
+                  id="other"
+                  className='value_box' 
+                  value={otros} 
+                  onChange={(e) => setOtros(e.target.value)} 
                   required 
                 />
               </div>
