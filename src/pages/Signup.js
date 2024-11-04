@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import '../styles/Signup.css';
 
 const Signup = () => {
-  const [email, setEmail] = useState('');
+  const [correo, setCorreo] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [nombre, setNombre] = useState('');
@@ -15,12 +15,12 @@ const Signup = () => {
     e.preventDefault();
     
     // Prueba simulada, ajustar API
-    console.log('Signing up with', email, nombre, password, confirmPassword, rol, estado);
+    console.log('Signing up with', correo , nombre, password, confirmPassword, rol, estado);
 
     const response = await fetch('http://localhost:8080/api/auth/register', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({nombre, rol, estado}),
+      body: JSON.stringify({nombre, rol, estado, correo, password}),
     });
     
     if(response.ok){
@@ -35,7 +35,7 @@ const Signup = () => {
 
   return (
     <div>
-      <h2>Inicio de sesión</h2>
+      <h2>Registro</h2>
       <div className='LoginBox'>
         <form className='form' onSubmit={handleSubmit}>
           <div>
@@ -44,8 +44,8 @@ const Signup = () => {
               type="email"
               id="email"
               className='value_box' 
-              value={email} 
-              onChange={(e) => setEmail(e.target.value)} 
+              value={correo} 
+              onChange={(e) => setCorreo(e.target.value)} 
               required 
             />
           </div>

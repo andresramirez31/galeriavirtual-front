@@ -4,7 +4,7 @@ import '../styles/Login.css';
 
 const Login = () => {
   const [password, setPassword] = useState('');
-  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -13,16 +13,16 @@ const Login = () => {
     const response = await fetch('http://localhost:8080/api/auth/login', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({username, password}),
+      body: JSON.stringify({email, password}),
     });
     
     if(response.ok){
-      alert('Login exitoso');    
+      alert('Login exitoso'); 
+      navigate('/');   
     } else {
       alert('Credenciales invalidas');
     }
     
-    navigate('/');
   };
 
   return (
@@ -32,13 +32,13 @@ const Login = () => {
         <form className='form' onSubmit={handleSubmit}>
           
           <div>
-            <label className="label_box_login" htmlFor='username'>Usuario:</label>
+            <label className="label_box_login" htmlFor='username'>Correo electronico:</label>
             <input 
-              type="text"
+              type="email"
               id="username" 
               className='value_box'
-              value={username} 
-              onChange={(e) => setUsername(e.target.value)} 
+              value={email} 
+              onChange={(e) => setEmail(e.target.value)} 
               required 
             />
           </div>

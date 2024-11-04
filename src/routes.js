@@ -6,6 +6,10 @@ import Login from './pages/Login';
 import SalonPick from './pages/SalonPick';
 import SalonAccess from './pages/SalonAccess';
 import SalonHolder from './pages/SalonHolder';
+import ExhibitionRoom from './pages/ExhibitionRoom'; 
+import Gallery from './pages/Gallery'; 
+
+
 import Signup from './pages/Signup';
 import ObrasForm from './pages/ObrasForm';
 
@@ -19,6 +23,7 @@ const AppRoutes = () => {
             <Route path='/SalonPick' element={<SalonPick />} />
             <Route path='/SalonAccess' element={<SalonAccess />} />
             <Route path='/SalonHolder' element={<SalonHolder />} />
+            <Route path="/gallery" element={<Gallery />} /> 
             <Route path='/ObrasForm' element={<ObrasForm />} />
         </Routes>
     );

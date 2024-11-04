@@ -10,6 +10,7 @@ const NavigationBar = () => {
         <li><Link  to="/signup" className='customLink'>Regístrate</Link></li>
         <li><Link to="/login" className='customLink'>Inicia sesión</Link></li>
         <li><Link  to="/SalonAccess"className='customLink'>Entra a una sala</Link></li>
+        <li><Link to="/gallery">Galería</Link></li>
       </ul>
     </nav>  
   );
