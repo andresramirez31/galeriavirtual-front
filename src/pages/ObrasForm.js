@@ -12,7 +12,20 @@ const ObrasForm = () => {
     const[otros, setOtros] = useState("");
     const[descripcion, setDescripcion] = useState("");
     const navigate = useNavigate();
+    const [imageBase64, setImageBase64] = useState("");
 
+    const handleFileChange = (event) => {
+      const file = event.target.files[0];
+      const reader = new FileReader();
+    
+      reader.onloadend = () => {
+        setImageBase64(reader.result.split(",")[1]); // Remove data prefix
+      };
+
+      if (file) {
+        reader.readAsDataURL(file); // Convert to base64 string
+      }
+    };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -20,7 +33,7 @@ const ObrasForm = () => {
         const response = await fetch('http://localhost:8080/api/obras', {
           method: 'POST',
           headers: {'Content-Type': 'application/json'},
-          body: JSON.stringify({nombre, medioAudiovisual, descripcion, exponente, palabrasClave, otros}),
+          body: JSON.stringify({nombre, medioAudiovisual, descripcion, exponente, palabrasClave, otros, imageBase64}),
         });
 
         console.log(JSON.stringify({nombre, medioAudiovisual, descripcion, exponente, palabrasClave, otros}))
@@ -118,6 +131,17 @@ const ObrasForm = () => {
                   onChange={(e) => setOtros(e.target.value)} 
                   required 
                 />
+              </div>
+
+              <div>
+                <label className="label_box_login" htmlFor='Imagen'>Imagen:</label>
+
+                <input 
+                  type="file" 
+                  onChange={handleFileChange} 
+                  accept="image/*"
+                />
+                
               </div>
 
               <button type="submit" className='save_button'>Guardar obra</button>
