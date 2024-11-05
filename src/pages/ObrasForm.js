@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/main.css';
+import '../styles/Login.css';
+import '../styles/obrasForm.css';
 
 const ObrasForm = () => { 
     
@@ -57,7 +59,7 @@ const ObrasForm = () => {
     return (
         <div>
           <h2>Formulario para obras</h2>
-          <div className='Box'>
+          <div className='LoginBox'>
             <form className='form' onSubmit={handleSubmit}>
               
               <div>
@@ -108,17 +110,17 @@ const ObrasForm = () => {
                 />
               </div>
 
-              <div>
+              <div className='KeywordsContainer'>
                 <label className="label_box_login" htmlFor='keywords'>Palabras clave:</label>
                 <input 
                   type="text"
                   id="keywords"
-                  className='value_box' 
+                  className='obras_value_box' 
                   value={inputPalabra} 
                   onChange={(e) => setInputPalabra(e.target.value)} 
                   required 
                 />
-                <button className="save_button" onClick={handleAddItem}>Añadir palabras clave:</button>
+                <button className="obras_save_button" onClick={handleAddItem}>Añadir palabras clave:</button>
               </div>
 
               <div>
