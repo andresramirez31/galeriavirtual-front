@@ -52,6 +52,7 @@ const Gallery = () => {
 
   return (
     <div>
+      <button onClick={() => handleSubmit()}></button>
       <button onClick={() => setNumRooms(numRooms + 1)}>Agregar Sala</button>
       <button onClick={() => setNumRooms(numRooms > 1 ? numRooms - 1 : 1)}>Quitar Sala</button>
 

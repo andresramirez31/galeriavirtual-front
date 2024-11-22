@@ -6,6 +6,23 @@
     
 }
 
+.ObrasBox {
+
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-rows: auto;
+  gap: 10px;
+  border: 1px solid #ccc; /* Creates the box border */
+  padding: 20px;          /* Adds spacing inside the box */
+  background-color: #f9f9f9; /* Light background color for the box */
+  border-radius: 10px;    /* Rounds the corners of the box */
+  width: 1800px;           /* Sets a fixed width for the box */
+  margin: 20px auto;
+  border-color: red;
+  border-width: 4px;
+  box-shadow: 0 7px 10px #999, 7px 0 10px #999; 
+}
+
 .obras_value_box {
 
     position: relative;
@@ -20,6 +37,7 @@
     position: relative;
     display: inline-block;
     padding: 15px 15px;
+    font-family: 'Times New Roman', Times, serif;
     font-size: 24px;
     cursor: pointer;
     text-align: center;
@@ -34,12 +52,35 @@
     margin-top: 10px;
     width: 70%;
     justify-self: center;
-  }
+}
   
-  .obras_save_button:hover {background-color: #3e8e41}
-  
-  .obras_save_button:active {
-    background-color: #3e8e41;
-    box-shadow: 0 5px #666;
-    transform: translateY(4px);
-  }
+.obras_save_button:hover {background-color: #3e8e41}
+
+.obras_save_button:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+.column1 {
+  grid-column: 1;
+  height: 150px;
+  text-align: center;
+  align-content: center;
+}
+
+.column2 {
+  grid-column: 2;
+  text-align: center;
+  align-content: center;
+}
+
+.column3 {
+  grid-column: 3;
+  height: 150px;
+  text-align: center;
+  align-content: center;
+}
+
+
+

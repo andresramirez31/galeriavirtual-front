@@ -7,8 +7,8 @@ const Signup = () => {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [nombre, setNombre] = useState('');
-  const [rol, setRol] = useState('');
-  const [estado, setEstado] = useState('');
+  const [rol] = useState('visitante');
+  const [estado] = useState('activo');
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -82,30 +82,6 @@ const Signup = () => {
               className='value_box' 
               value={confirmPassword} 
               onChange={(e) => setConfirmPassword(e.target.value)} 
-              required 
-            />
-          </div>
-
-          <div>
-            <label className="label_box_login" htmlFor='role'>Rol:</label>
-            <input 
-              type="text"
-              id="role"
-              className='value_box' 
-              value={rol} 
-              onChange={(e) => setRol(e.target.value)} 
-              required 
-            />
-          </div>
-
-          <div>
-            <label className="label_box_login" htmlFor='state'>Estado:</label>
-            <input 
-              type="text"
-              id="state"
-              className='value_box' 
-              value={estado} 
-              onChange={(e) => setEstado(e.target.value)} 
               required 
             />
           </div>

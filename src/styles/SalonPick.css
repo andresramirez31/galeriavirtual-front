@@ -21,11 +21,14 @@
     border: 1px solid #ccc;
 }
 
-.SalonText {
+
+
+.SalonObraText {
 
     text-align: center;
     font-family: 'Times New Roman', Times, serif;
     font-size: 30px;
     color: black;
+    width: 100%;
 
 }

@@ -59,23 +59,31 @@ const ObrasForm = () => {
     return (
         <div>
           <h2>Formulario para obras</h2>
-          <div className='LoginBox'>
+          <div className='ObrasBox'>
             <form className='form' onSubmit={handleSubmit}>
               
-              <div>
+              <div className='column1'>
                 <label className="label_box_login" htmlFor='projectName'>Nombre de la obra:</label>
-                <input 
-                  type="text"
-                  id="projectName" 
-                  className='value_box'
-                  value={nombre} 
-                  onChange={(e) => setNombre(e.target.value)} 
-                  required 
-                />
+                
               </div>
-              
-              <div>
+              <div className='column2'>
+                <input 
+                    type="text"
+                    id="projectName" 
+                    className='value_box'
+                    value={nombre} 
+                    onChange={(e) => setNombre(e.target.value)} 
+                    required 
+                  />
+        
+              </div>
+
+              <div className='column1'>
                 <label className="label_box_login" htmlFor='projectType'>Medio audiovisual:</label>
+
+              </div>
+
+              <div className='column2'>
                 <input 
                   type="text"
                   id="projectType"
@@ -84,47 +92,73 @@ const ObrasForm = () => {
                   onChange={(e) => setMedioAudiovisual(e.target.value)} 
                   required 
                 />
+
               </div>
-    
-              <div>
+
+              <div className='column1'>
                 <label className="label_box_login" htmlFor='desc'>Descripción de la obra:</label>
-                <input 
-                  type="text"
-                  id="desc"
-                  className='value_box' 
-                  value={descripcion} 
-                  onChange={(e) => setDescripcion(e.target.value)} 
-                  required 
-                />
+        
               </div>
 
-              <div>
+              <div className='column2'>
+                <input 
+                    type="text"
+                    id="desc"
+                    className='value_box' 
+                    value={descripcion} 
+                    onChange={(e) => setDescripcion(e.target.value)} 
+                    required 
+                  />
+        
+              </div>
+
+              <div className='column1'>
                 <label className="label_box_login" htmlFor='authorName'>Nombre del autor de la obra:</label>
-                <input 
-                  type="text"
-                  id="authorName"
-                  className='value_box' 
-                  value={exponente} 
-                  onChange={(e) => setExponente(e.target.value)} 
-                  required 
-                />
+        
               </div>
 
-              <div className='KeywordsContainer'>
+              <div className='column2'>
+                <input 
+                    type="text"
+                    id="authorName"
+                    className='value_box' 
+                    value={exponente} 
+                    onChange={(e) => setExponente(e.target.value)} 
+                    required 
+                  />
+        
+              </div>
+
+              <div className='column1'>
                 <label className="label_box_login" htmlFor='keywords'>Palabras clave:</label>
+        
+              </div>
+
+              <div className='column2'>
                 <input 
                   type="text"
                   id="keywords"
-                  className='obras_value_box' 
+                  className=' value_box' 
                   value={inputPalabra} 
                   onChange={(e) => setInputPalabra(e.target.value)} 
                   required 
                 />
-                <button className="obras_save_button" onClick={handleAddItem}>Añadir palabras clave:</button>
+        
               </div>
 
-              <div>
+              
+              <div className='column3'>
+                <button className="obras_save_button" onClick={handleAddItem}>Añadir palabras clave:</button>
+                
+              </div>
+
+              <div className='column1'>
                 <label className="label_box_login" htmlFor='other'>Otros:</label>
+        
+              </div>
+
+              <div className='column2'>
+                
                 <input 
                   type="text"
                   id="other"
@@ -135,18 +169,21 @@ const ObrasForm = () => {
                 />
               </div>
 
-              <div>
+            <div className='column1'>
                 <label className="label_box_login" htmlFor='Imagen'>Imagen:</label>
-
-                <input 
-                  type="file" 
-                  onChange={handleFileChange} 
-                  accept="image/*"
-                />
-                
+             
               </div>
 
-              <button type="submit" className='save_button'>Guardar obra</button>
+              <div className='column2'>
+                <input
+                     
+                    type="file" 
+                    onChange={handleFileChange} 
+                    accept="image/*"
+                  />
+              </div>
+
+              <button type="submit" className='obras_save_button'>Guardar obra</button>
             </form>
           </div>
         </div>

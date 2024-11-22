@@ -10,6 +10,7 @@ const ArtSalonCreation = () => {
     const [nombreSalon, setNombreSalon] = useState('');
     const [descSalon, setDescSalon] = useState('');
     const [fechaExh, setFechaExh] = useState(null);
+    const [sponsor, setSponsor] = useState('');
     const navigate = useNavigate();
 
     
@@ -40,8 +41,13 @@ const ArtSalonCreation = () => {
             <form onSubmit={handleSubmit} className='form'>
                 
                 <div className='column1'>
-                    <label htmlFor='NombreSalon' className='label_box'>Nombre del salón:  </label>
+                    <label htmlFor='NombreSalon' className='label_box'>Nombre del salón:</label>
 
+                    
+
+                </div>
+
+                <div className='column2'>
                     <input 
                         type="text"
                         id="NombreSalon" 
@@ -51,17 +57,18 @@ const ArtSalonCreation = () => {
                         onChange={(e) => setNombreSalon(e.target.value)} 
                         required 
                     />
-
-                </div>
-
-                <div className='column2'>
-                    <label htmlFor='fechaExh' className='label_box'>Fecha de la exhibición:   </label>
+                    
 
                 </div>
 
                 <div className='column1'>
-                    <label htmlFor='DescSalon' className='label_box'>Descripción del salón:   </label>
+                    <label htmlFor='DescSalon' className='label_box'>Descripción del salón:</label>
 
+                    
+                
+                </div>
+
+                <div className='column2'>
                     <input 
                         type="text"
                         id="DescSalon" 
@@ -71,7 +78,10 @@ const ArtSalonCreation = () => {
                         onChange={(e) => setDescSalon(e.target.value)} 
                         required 
                     />
-                
+                </div>
+
+                <div className='column1'>
+                    <label htmlFor='fechaExh' className='label_box'>Fecha de la exhibición:</label>
                 </div>
 
                 <div className='column2'>
@@ -85,14 +95,27 @@ const ArtSalonCreation = () => {
                 </div>
 
                 <div className='column1'>
-                    <p>Fecha seleccionada:</p>
+                    <label htmlFor='DescSalon' className='label_box'>Sponsor:</label>
+
                 </div>
 
                 <div className='column2'>
-                    <p>{fechaExh ? fechaExh.toLocaleDateString() : 'No date selected'}</p>
+
+                    
+                    <input 
+                        type="text"
+                        id="DescSalon" 
+                        value={sponsor}
+                        className='value_box'
+                        placeholder="Ingrese descripción del salón" 
+                        onChange={(e) => setSponsor(e.target.value)} 
+                        required 
+                    />
+                
+
                 </div>
                 
-                <button type="submit" className='column1 save_button'>Guardar Salón</button>
+                <button type="submit" className='column2 save_button'>Guardar Salón</button>
             </form>
             
         </div>

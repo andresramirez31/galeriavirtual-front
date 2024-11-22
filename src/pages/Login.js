@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/Login.css';
+import { useRole } from '../context/role_context';
 
 const Login = () => {
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
+  const { login } = useRole(); 
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -17,6 +19,12 @@ const Login = () => {
     });
     
     if(response.ok){
+      const data = await response.json();
+      const token = data.token;
+
+      login(token);
+
+      localStorage.setItem('jwtToken', token);
       alert('Login exitoso'); 
       navigate('/');   
     } else {

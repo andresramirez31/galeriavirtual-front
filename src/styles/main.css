@@ -61,6 +61,7 @@ nav .menuItems li .customLink:hover {
 
 .save_button {
     position: relative;
+    font-family: 'Times New Roman', Times, serif;
     display: inline-block;
     padding: 15px 15px;
     font-size: 24px;
@@ -91,6 +92,7 @@ nav .menuItems li .customLink:hover {
     position: relative;
     display: inline-block;
     padding: 15px 25px;
+    font-family: 'Times New Roman', Times, serif;
     font-size: 24px;
     cursor: pointer;
     text-align: center;
@@ -160,7 +162,7 @@ nav .menuItems li .customLink:hover {
 
   text-align: center;
   font-family: 'Times New Roman', Times, serif;
-  font-size: 30px;
+  font-size: 40px;
   width: 80%;
   color: black;
   
