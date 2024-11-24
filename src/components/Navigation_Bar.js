@@ -28,18 +28,9 @@ const NavigationBar = () => {
 
   switch(role.role){
     case "visitante":
-      return (
-        <nav>
-          <ul className='menuItems'>
-            <li><Link to="/" className='customLink'>Inicio</Link></li>
-            <li><button onClick={handleLogout} className='customLink'>Cerrar sesion</button></li>
-            <li><Link  to="/SalonAccess"className='customLink'>Entra a una sala</Link></li>
-            <li><Link to="/gallery" className='customLink'>Galería</Link></li>
-          </ul>
-        </nav>  
-      );
-
     case "admin":
+    case "evaluador":
+    case "expositor":
       return (
         <nav>
           <ul className='menuItems'>
@@ -48,19 +39,7 @@ const NavigationBar = () => {
             <li><Link  to="/SalonAccess"className='customLink'>Entra a una sala</Link></li>
             <li><Link to="/gallery" className='customLink'>Galería</Link></li>
           </ul>
-        </nav>   
-      );
-
-    case "evaluador":
-      return (
-        <nav>
-          <ul className='menuItems'>
-            <li><Link to="/" className='customLink'>Inicio</Link></li>
-            <li><button onClick={handleLogout} className='customLink'>Cerrar sesion</button></li>
-            <li><Link  to="/SalonAccess"className='customLink'>Entra a una sala</Link></li>
-            <li><Link to="/gallery" className='customLink'>Galería</Link></li>
-          </ul>
-        </nav>   
+        </nav>  
       );
     
     default:

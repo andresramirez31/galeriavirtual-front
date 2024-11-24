@@ -13,14 +13,6 @@ const GuestLayout = () => {
     
                 <h3 className="Greeting">Bienvenido usuario/a</h3>
     
-            
-    
-                <Link to="/createGallery">
-                <button className='btn_event' style={{ padding: '10px 20px', fontSize: '16px' }}>
-                    Ir a la creación de salón
-                </button>
-                </Link>
-    
                 <Link to="/SalonAccess">
                 <button className="btn_event" style={{ padding: '10px 20px', fontSize: '16px' }}>
                     Entrar a Salón de exposiciones

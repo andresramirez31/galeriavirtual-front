@@ -93,6 +93,7 @@ const SalonAccess = () => {
             );
     
         case "admin":
+        case "expositor":
           return (
             <div>
                 <h2>Acceso a Salon</h2>

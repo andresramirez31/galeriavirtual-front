@@ -25,6 +25,9 @@ const Home = () => {
 
     case "evaluador":
       return <EvaluadorLayout />;
+
+    case "expositor":
+      return <VisitanteLayout />;
     
     default:
       return <GuestLayout />;

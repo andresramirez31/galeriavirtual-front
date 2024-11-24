@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useRole } from '../context/role_context';
 import { useNavigate } from 'react-router-dom';
 import '../styles/Signup.css';
 
@@ -7,7 +8,7 @@ const Signup = () => {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [nombre, setNombre] = useState('');
-  const [rol] = useState('visitante');
+  const [rol, setRol] = useState('visitante');
   const [estado] = useState('activo');
   const navigate = useNavigate();
 
@@ -33,64 +34,213 @@ const Signup = () => {
     navigate('/');
   };
 
-  return (
-    <div>
-      <h2>Registro</h2>
-      <div className='LoginBox'>
-        <form className='form' onSubmit={handleSubmit}>
-          <div>
-            <label className="label_box_login" htmlFor='email'>Correo Electrónico:</label>
-            <input 
-              type="email"
-              id="email"
-              className='value_box' 
-              value={correo} 
-              onChange={(e) => setCorreo(e.target.value)} 
-              required 
-            />
-          </div>
-
-          <div>
-            <label className="label_box_login" htmlFor='username'>Usuario:</label>
-            <input 
-              type="text"
-              id="username" 
-              className='value_box'
-              value={nombre} 
-              onChange={(e) => setNombre(e.target.value)} 
-              required 
-            />
-          </div>
-
-          <div>
-            <label className="label_box_login" htmlFor='password'>Contraseña:</label>
-            <input 
-              type="password"
-              id="password"
-              className='value_box' 
-              value={password} 
-              onChange={(e) => setPassword(e.target.value)} 
-              required 
-            />
-          </div>
-
-          <div>
-            <label className="label_box_login" htmlFor='ConfirmPassword'>Confirmar contraseña:</label>
-            <input 
-              type="password"
-              id="ConfirmPassword"
-              className='value_box' 
-              value={confirmPassword} 
-              onChange={(e) => setConfirmPassword(e.target.value)} 
-              required 
-            />
-          </div>
-
-          <button type="submit" className='save_button'>Registrarse</button>
-        </form>
+  const { role } = useRole();
+  
+  if (!role){
+    return (
+      <div>
+        <h2>Registro</h2>
+        <div className='LoginBox'>
+          <form className='form' onSubmit={handleSubmit}>
+            <div>
+              <label className="label_box_login" htmlFor='email'>Correo Electrónico:</label>
+              <input 
+                type="email"
+                id="email"
+                className='value_box' 
+                value={correo} 
+                onChange={(e) => setCorreo(e.target.value)} 
+                required 
+              />
+            </div>
+  
+            <div>
+              <label className="label_box_login" htmlFor='username'>Usuario:</label>
+              <input 
+                type="text"
+                id="username" 
+                className='value_box'
+                value={nombre} 
+                onChange={(e) => setNombre(e.target.value)} 
+                required 
+              />
+            </div>
+  
+            <div>
+              <label className="label_box_login" htmlFor='password'>Contraseña:</label>
+              <input 
+                type="password"
+                id="password"
+                className='value_box' 
+                value={password} 
+                onChange={(e) => setPassword(e.target.value)} 
+                required 
+              />
+            </div>
+  
+            <div>
+              <label className="label_box_login" htmlFor='ConfirmPassword'>Confirmar contraseña:</label>
+              <input 
+                type="password"
+                id="ConfirmPassword"
+                className='value_box' 
+                value={confirmPassword} 
+                onChange={(e) => setConfirmPassword(e.target.value)} 
+                required 
+              />
+            </div>
+  
+            <button type="submit" className='save_button'>Registrarse</button>
+          </form>
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
+
+  switch(role.role){
+    
+    case "admin":
+      return (
+        <div>
+          <h2>Registro</h2>
+          <div className='LoginBox'>
+            <form className='form' onSubmit={handleSubmit}>
+              <div>
+                <label className="label_box_login" htmlFor='email'>Correo Electrónico:</label>
+                <input 
+                  type="email"
+                  id="email"
+                  className='value_box' 
+                  value={correo} 
+                  onChange={(e) => setCorreo(e.target.value)} 
+                  required 
+                />
+              </div>
+    
+              <div>
+                <label className="label_box_login" htmlFor='username'>Usuario:</label>
+                <input 
+                  type="text"
+                  id="username" 
+                  className='value_box'
+                  value={nombre} 
+                  onChange={(e) => setNombre(e.target.value)} 
+                  required 
+                />
+              </div>
+    
+              <div>
+                <label className="label_box_login" htmlFor='password'>Contraseña:</label>
+                <input 
+                  type="password"
+                  id="password"
+                  className='value_box' 
+                  value={password} 
+                  onChange={(e) => setPassword(e.target.value)} 
+                  required 
+                />
+              </div>
+    
+              <div>
+                <label className="label_box_login" htmlFor='ConfirmPassword'>Confirmar contraseña:</label>
+                <input 
+                  type="password"
+                  id="ConfirmPassword"
+                  className='value_box' 
+                  value={confirmPassword} 
+                  onChange={(e) => setConfirmPassword(e.target.value)} 
+                  required 
+                />
+              </div>
+
+              <div>
+                <label className="label_box_login" htmlFor='ConfirmPassword'>Rol del usuario:</label>
+                <select 
+                  id="userRole"
+                  className='value_box' 
+                  value={rol} 
+                  onChange={(e) => setRol(e.target.value)} 
+                  required 
+                >
+                  
+                  <option value="evaluador">evaluador</option>
+                  <option value="expositor">expositor</option>
+                  <option value="visitante">visitante</option>
+                  
+                </select>
+              </div>
+    
+              <button type="submit" className='save_button'>Registrarse</button>
+            </form>
+          </div>
+        </div>
+      );
+
+   
+    
+    default:
+      return (
+        <div>
+          <h2>Registro</h2>
+          <div className='LoginBox'>
+            <form className='form' onSubmit={handleSubmit}>
+              <div>
+                <label className="label_box_login" htmlFor='email'>Correo Electrónico:</label>
+                <input 
+                  type="email"
+                  id="email"
+                  className='value_box' 
+                  value={correo} 
+                  onChange={(e) => setCorreo(e.target.value)} 
+                  required 
+                />
+              </div>
+    
+              <div>
+                <label className="label_box_login" htmlFor='username'>Usuario:</label>
+                <input 
+                  type="text"
+                  id="username" 
+                  className='value_box'
+                  value={nombre} 
+                  onChange={(e) => setNombre(e.target.value)} 
+                  required 
+                />
+              </div>
+    
+              <div>
+                <label className="label_box_login" htmlFor='password'>Contraseña:</label>
+                <input 
+                  type="password"
+                  id="password"
+                  className='value_box' 
+                  value={password} 
+                  onChange={(e) => setPassword(e.target.value)} 
+                  required 
+                />
+              </div>
+    
+              <div>
+                <label className="label_box_login" htmlFor='ConfirmPassword'>Confirmar contraseña:</label>
+                <input 
+                  type="password"
+                  id="ConfirmPassword"
+                  className='value_box' 
+                  value={confirmPassword} 
+                  onChange={(e) => setConfirmPassword(e.target.value)} 
+                  required 
+                />
+              </div>
+    
+              <button type="submit" className='save_button'>Registrarse</button>
+            </form>
+          </div>
+        </div>
+      );
+
+  }
+
+  
 };
 
 export default Signup;
