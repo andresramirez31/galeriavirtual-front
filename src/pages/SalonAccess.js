@@ -102,9 +102,9 @@ const SalonAccess = () => {
                     <p className="SalonText"><b>Integrantes máximos:</b> {maxMembers}</p>  
                     <p className="SalonText"><b>Integrantes actuales:</b> {currentMembers.length}</p>
                     {isFull ? (
-                        <p className="SalonText">El salon esta lleno</p>
+                        <p className="SalonText">El salón está lleno</p>
                     ) : (
-                        <p className="SalonText">El salon no esta lleno</p>
+                        <p className="SalonText">El salón no está lleno</p>
                     )}
                     <div>
 
