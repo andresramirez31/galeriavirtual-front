@@ -7,26 +7,39 @@ const ArtSalonCreation = () => {
 
     // Manejo de variables de la pagina
     
-    const [nombreSalon, setNombreSalon] = useState('');
+    const [nombre, setNombre] = useState('');
     const [descSalon, setDescSalon] = useState('');
-    const [fechaExh, setFechaExh] = useState(null);
+    const [fechaVigencia, setFechaVigencia] = useState(null);
     const [sponsor, setSponsor] = useState('');
     const navigate = useNavigate();
 
     
     //Manejo de guardado de variables del formulario
+
+    
     
     const handleDateChange = (e) => {
         const ValorFecha = e.target.value; // Toma fecha como string
-        setFechaExh(new Date(ValorFecha)); //Convierte string a objeto Fecha
+        setFechaVigencia(new Date(ValorFecha)); //Convierte string a objeto Fecha
     };
     
     
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         
-        // Prueba simulada, ajustar API
-        console.log('Guardando Salón con datos:', nombreSalon, descSalon, fechaExh);
+        const response = await fetch('http://localhost:8080/api/salon', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({nombre, descSalon, fechaVigencia, sponsor}),
+        });
+
+        console.log(JSON.stringify({nombre, descSalon, fechaVigencia, sponsor}))
+        
+        if(response.ok){
+          alert('Creación de proyecto exitosa');    
+        } else {
+          alert('Creación fallida');
+        }
         
         
         navigate('/SalonPick');
@@ -51,10 +64,10 @@ const ArtSalonCreation = () => {
                     <input 
                         type="text"
                         id="NombreSalon" 
-                        value={nombreSalon}
+                        value={nombre}
                         className='value_box'
                         placeholder="Ingrese el nombre del salón" 
-                        onChange={(e) => setNombreSalon(e.target.value)} 
+                        onChange={(e) => setNombre(e.target.value)} 
                         required 
                     />
                     
@@ -87,7 +100,7 @@ const ArtSalonCreation = () => {
                 <div className='column2'>
                     <input 
                         type="date"
-                        id="fechaExh" 
+                        id="fechaVigencia" 
                         className='value_box'
                         placeholder="Ajustar fecha exhibición" 
                         onChange={handleDateChange}  

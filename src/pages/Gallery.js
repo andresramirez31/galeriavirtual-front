@@ -42,12 +42,6 @@ const Gallery = () => {
     fetchObras();
   }, []);
   
-  const handleSubmit = async (e) => {
-    
-  
-    console.log(obras)
-
-  };
 
   if(!role){
     return (

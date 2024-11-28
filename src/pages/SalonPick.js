@@ -20,7 +20,7 @@ const SalonPick = () => {
             return (
             
                 <div>
-                    <h2>ELECCIÓN DE SALÓN GALERÍA VIRTUAL</h2>
+                    <h2>MODIFICACIÓN SALÓN GALERÍA VIRTUAL</h2>
                     <div className="SalonBox">
                         
                         <div>
@@ -50,7 +50,7 @@ const SalonPick = () => {
             return (
             
                 <div>
-                    <h2>ELECCIÓN DE SALÓN GALERÍA VIRTUAL</h2>
+                    <h2>MODIFICACIÓN SALÓN GALERÍA VIRTUAL</h2>
                     <div className="SalonBox">
                         
                         <div>
