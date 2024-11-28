@@ -19,6 +19,7 @@ p {
 
 body {
   background-color: #3ebdac;
+  
 }
 
 nav {
@@ -70,7 +71,7 @@ nav .menuItems li .customLink:hover {
     text-decoration: none;
     outline: none;
     color: #fff;
-    background-color: #04AA6D;
+    background-color: #137598;
     border: none;
     border-radius: 15px;
     box-shadow: 0 9px #999;
@@ -80,10 +81,10 @@ nav .menuItems li .customLink:hover {
     justify-self: center;
   }
   
-  .save_button:hover {background-color: #3e8e41}
+  .save_button:hover {background-color: #2559d1}
   
   .save_button:active {
-    background-color: #3e8e41;
+    background-color: #2559d1;
     box-shadow: 0 5px #666;
     transform: translateY(4px);
   }
@@ -153,8 +154,8 @@ nav .menuItems li .customLink:hover {
   padding: 10px;
   border: 1px solid #ccc;
   font-size: 30px;
-  width: 50%;
-  height: 50%;
+  width: 95%;
+  height: 40%;
   margin: 10px;
 }
 

@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'; 
 import ExhibitionRoom from './ExhibitionRoom';
 import { useNavigate } from 'react-router-dom';
-
+import { useRole } from '../context/role_context';
 
 const Gallery = () => {
   const [numRooms, setNumRooms] = useState(3);
   const [obras, setObras] = useState([]);
+  const { role } = useRole();
   const navigate = useNavigate();
   const artworks = [
     obras,
@@ -26,6 +27,7 @@ const Gallery = () => {
             const processedObras = data
                 .filter(obra => obra.imageData !== null) // Filter out documents with null imageData
                 .map((obra, index) => ({
+                    idOriginal: obra.id,
                     id: index + 1, // Assign an incremental id
                     title: obra.nombre || 'Title not available',
                     image: `data:image/jpeg;base64,${obra.imageData}` // Convert image data to Base64 string
@@ -47,24 +49,45 @@ const Gallery = () => {
 
   };
 
-
-  
-
-  return (
-    <div>
-      <button onClick={() => handleSubmit()}></button>
-      <button onClick={() => setNumRooms(numRooms + 1)}>Agregar Sala</button>
-      <button onClick={() => setNumRooms(numRooms > 1 ? numRooms - 1 : 1)}>Quitar Sala</button>
-
-      {Array.from({ length: numRooms }).map((_, index) => (
-        <ExhibitionRoom key={index} artworks={artworks[index] || []} />
-      ))}
-
+  if(!role){
+    return (
       <div>
-      <button onClick={() => handleSubmit()}>Mostrar obras consola</button>
+      
+        {Array.from({ length: numRooms }).map((_, index) => (
+          <ExhibitionRoom key={index} artworks={artworks[index] || []} />
+        ))}
+  
       </div>
-    </div>
-  );
+    );
+  }
+  
+  switch(role.role){
+    case "admin":
+      return (
+        <div>
+        
+          <button onClick={() => setNumRooms(numRooms + 1)}>Agregar Sala</button>
+          <button onClick={() => setNumRooms(numRooms > 1 ? numRooms - 1 : 1)}>Quitar Sala</button>
+    
+          {Array.from({ length: numRooms }).map((_, index) => (
+            <ExhibitionRoom key={index} artworks={artworks[index] || []} />
+          ))}
+    
+        </div>
+      );
+    default:
+      return (
+        <div>
+        
+          {Array.from({ length: numRooms }).map((_, index) => (
+            <ExhibitionRoom key={index} artworks={artworks[index] || []} />
+          ))}
+    
+        </div>
+      );
+
+  }
+
 };
 
 export default Gallery;
