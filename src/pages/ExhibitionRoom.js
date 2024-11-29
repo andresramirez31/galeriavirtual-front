@@ -10,7 +10,7 @@ import { RoundedBox } from 'three-stdlib';
 
 
 // Componente para la obra de arte (Artwork)
-const Artwork = ({ image, position, title, reactions, onClick, onShowImage, onOpenModal }) => {
+const Artwork = ({ image, position, title, reactions, onDeleteClick, onClick, onShowImage, onOpenModal }) => {
   const texture = useTexture(image || '/default.jpg'); // Asegúrate de que la ruta de la imagen sea válida
 
   // Definir las reacciones (emojis)
@@ -48,7 +48,7 @@ const Artwork = ({ image, position, title, reactions, onClick, onShowImage, onOp
 
 
       {/* Botón Nota encima de "ver" */}
-      <mesh position={[4.5, 1, 0]} onClick={onOpenModal}>
+      <mesh position={[4.5, 0.7, 0]} onClick={onOpenModal}>
         {/* Caja del botón con bordes redondeados */}
         <boxGeometry args={[1.5, 0.5, 0.1]} />
         <meshStandardMaterial color="green" />
@@ -57,13 +57,32 @@ const Artwork = ({ image, position, title, reactions, onClick, onShowImage, onOp
 
       {/* Texto dentro del botón */}
       <Text
-        position={[4.5, 1, 0.06]} // Ajustado para que el texto esté centrado dentro del botón
+        position={[4.5, 0.7, 0.06]} // Ajustado para que el texto esté centrado dentro del botón
         fontSize={0.2}
         color="white"
         anchorX="center"
         anchorY="middle"
       >
         Calificar 🌟
+      </Text>
+
+      {/* Botón Nota encima de "ver" */}
+      <mesh position={[4.5, 1.5, 0]} onClick={onDeleteClick}>
+        {/* Caja del botón con bordes redondeados */}
+        <boxGeometry args={[1.5, 0.5, 0.1]} />
+        <meshStandardMaterial color="red" />
+      </mesh>
+
+
+      {/* Texto dentro del botón */}
+      <Text
+        position={[4.5, 1.5, 0.06]} // Ajustado para que el texto esté centrado dentro del botón
+        fontSize={0.2}
+        color="white"
+        anchorX="center"
+        anchorY="middle"
+      >
+        Eliminar
       </Text>
 
 
@@ -154,6 +173,29 @@ const RatingModal = ({ isOpen, onClose, onSave }) => {
       </div>
     </div>
   );
+};
+
+const deleteObra = async (id) => {
+  const confirmDelete = window.confirm("Esta seguro de eliminar esta obra?");
+  if (!confirmDelete) return;
+
+  try {
+    const response = await fetch(`http://localhost:8080/api/obras/${id}`, {
+      method: 'DELETE',
+    });
+
+    if (response.ok) {
+      alert("La obra ha sido eliminada.");
+      // Optionally remove the deleted obra from the local state
+      
+    } else {
+      const error = await response.text();
+      alert(`Error: ${error}`);
+    }
+  } catch (error) {
+    console.error("Error eliminando la obra:", error);
+    alert("Error eliminando la obra, intente de nuevo.");
+  }
 };
 
 // Componente principal para la sala de exposición (ExhibitionRoom)
@@ -262,6 +304,7 @@ const ExhibitionRoom = ({ artworks }) => {
             onClick={() => handleArtworkClick([-20 + index * 10, 2, -24])}
             onShowImage={() => handleShowImage(artwork.image)}
             onOpenModal={() => handleOpenModal(artwork.idOriginal)}
+            onDeleteClick={() => deleteObra(artwork.idOriginal)}
           />
         ))}
       </Canvas>
