@@ -10,14 +10,14 @@ import { RoundedBox } from 'three-stdlib';
 
 
 // Componente para la obra de arte (Artwork)
-const Artwork = ({ image, position, title, reactions, onDeleteClick, onClick, onShowImage, onOpenModal }) => {
+const Artwork = ({ image, position, rotation, title, reactions, onDeleteClick, onClick, onShowImage, onOpenModal }) => {
   const texture = useTexture(image || '/default.jpg'); // Asegúrate de que la ruta de la imagen sea válida
 
   // Definir las reacciones (emojis)
   const reactionSymbols = ['😊', '❤️', '👏', '🔥']; 
 
   return (
-    <group position={position} onClick={onClick}>
+    <group position={position} rotation={rotation} onClick={onClick}>
       <mesh>
         <boxGeometry args={[4, 4, 0.1]} />
         <meshStandardMaterial map={texture} />
@@ -295,18 +295,42 @@ const ExhibitionRoom = ({ artworks }) => {
           <meshStandardMaterial color="lightgrey" />
         </Plane>
         <Wall wall={fondo} />
-        {artworks.map((artwork, index) => (
+        {artworks.map((artwork, index) => {
+          // Parámetros de distribución
+          const spaceBetween = 9.5; // Espacio entre las obras
+          const maxPerWall = 5; // Número máximo de obras por pared
+
+          // Cálculo de la posición y rotación según la pared
+          let position = [0, 2, 0]; // Posición predeterminada
+          let rotation = [0, 0, 0]; // Rotación predeterminada
+
+          if (index < maxPerWall) {
+            // Pared del fondo (mirando al frente)
+            position = [-21 + index * spaceBetween, 2, -24];
+          } else if (index < 2 * maxPerWall) {
+            // Pared de la izquierda (mirando hacia el interior)
+            position = [-24, 2, -15 + (index - maxPerWall) * spaceBetween];
+            rotation = [0, Math.PI / 2, 0]; // Girar 90° en el eje Y
+          } else if (index < 3 * maxPerWall) {
+            // Pared de la derecha (mirando hacia el interior)
+            position = [24, 2, -20 + (index - 2 * maxPerWall) * spaceBetween];
+            rotation = [0, -Math.PI / 2, 0]; // Girar -90° en el eje Y
+          }
+
+          return(
           <Artwork
             key={artwork.id}
             image={artwork.image}
-            position={[-20 + index * 10, 2, -24]}
+            position={position}
             title={artwork.title}
-            onClick={() => handleArtworkClick([-20 + index * 10, 2, -24])}
+            onClick={() => handleArtworkClick(position)}
             onShowImage={() => handleShowImage(artwork.image)}
             onOpenModal={() => handleOpenModal(artwork.idOriginal)}
             onDeleteClick={() => deleteObra(artwork.idOriginal)}
+            rotation={rotation}
           />
-        ))}
+          );
+        })}
       </Canvas>
 
       {/* Ventana emergente de calificación */}

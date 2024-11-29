@@ -34,6 +34,7 @@ const SalonAccess = () => {
                 setError(err.message);
             } finally {
                 setIsLoading(false);
+                
             }
             
         }
@@ -55,10 +56,12 @@ const SalonAccess = () => {
         
     };
 
-    const firstSalon = salones.length > 0 ? salones[0] : null;
-    const date = new Date(firstSalon.fechaVigencia);
-    const fechaReal = date.toISOString().split('T')[0];
-
+    // Safely get the first salon
+    const firstSalon = salones?.[0]; // Optional chaining to avoid accessing undefined
+    const fechaVigencia = firstSalon?.fechaVigencia; // Using optional chaining for safety
+    const date = fechaVigencia ? new Date(fechaVigencia) : null;
+    const fechaReal = date ? date.toISOString().split('T')[0] : 'No valid date';
+    
     if (!role){
         return (
             <div>
