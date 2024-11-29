@@ -12,6 +12,7 @@ const ArtSalonCreation = () => {
     const [fechaVigencia, setFechaVigencia] = useState(null);
     const [sponsor, setSponsor] = useState('');
     const navigate = useNavigate();
+    
 
     
     //Manejo de guardado de variables del formulario
@@ -36,7 +37,7 @@ const ArtSalonCreation = () => {
         console.log(JSON.stringify({nombre, descSalon, fechaVigencia, sponsor}))
         
         if(response.ok){
-          alert('Creación de proyecto exitosa');    
+          alert('Creación de salón exitosa');    
         } else {
           alert('Creación fallida');
         }

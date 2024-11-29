@@ -31,6 +31,7 @@ const ObrasForm = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
         
         const response = await fetch('http://localhost:8080/api/obras', {
           method: 'POST',
@@ -140,8 +141,7 @@ const ObrasForm = () => {
                   id="keywords"
                   className=' value_box' 
                   value={inputPalabra} 
-                  onChange={(e) => setInputPalabra(e.target.value)} 
-                  required 
+                  onChange={(e) => setInputPalabra(e.target.value)}  
                 />
         
               </div>
@@ -180,6 +180,7 @@ const ObrasForm = () => {
                     type="file" 
                     onChange={handleFileChange} 
                     accept="image/*"
+                    required
                   />
               </div>
 

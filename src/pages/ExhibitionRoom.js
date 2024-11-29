@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls, Box, Plane, useTexture, Text } from '@react-three/drei';
+import { useRole } from '../context/role_context';
 import { useLoader } from '@react-three/fiber';
 import { TextureLoader } from 'three';
 import { RoundedBoxGeometry } from 'three/examples/jsm/geometries/RoundedBoxGeometry';
@@ -163,6 +164,7 @@ const ExhibitionRoom = ({ artworks }) => {
   const [imageScale, setImageScale] = useState(1); // Estado para manejar el tamaño de la imagen
   const [idOriginalObra1, setIdOriginalObra] = useState("");
   const [fondo, setFondo] = useState("/pared.jpg");
+  const { role } = useRole();
 
   const handleArtworkClick = (position) => {
     setCameraPosition([position[0], position[1] + 2, position[2] + 5]);
@@ -182,19 +184,33 @@ const ExhibitionRoom = ({ artworks }) => {
   };
 
   const handleSaveRating = async (nota, comentario) => {
-    alert(`Calificación guardada: ${nota}\nComentario: ${comentario}`);
-    const idOriginalObra = idOriginalObra1
-
-    const response = await fetch('http://localhost:8080/api/obras/comentarios', {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({idOriginalObra, nota, comentario}),
-    });
-    if(response.ok){
-      handleCloseModal();
+    
+    if(!role){
+      alert(`No tiene permisos para evaluar`);
     } else {
-      alert('Error al guardar');
+
+      switch(role.role){
+        case "evaluador": {
+          alert(`Calificación guardada: ${nota}\nComentario: ${comentario}`);
+          const idOriginalObra = idOriginalObra1
+          const response = await fetch('http://localhost:8080/api/obras/comentarios', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({idOriginalObra, nota, comentario}),
+          });
+          if(response.ok){
+            handleCloseModal();
+          } else {
+            alert('Error al guardar');
+          }
+          break;
+        }
+        default:
+          alert(`No tiene permisos para evaluar`);
+
+      }
     }
+    
 
     
   };
